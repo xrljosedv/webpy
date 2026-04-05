@@ -149,14 +149,16 @@ def list_endpoints():
 
 @app.route('/', methods=['GET'])
 def home():
-    try:
+    template_path = base_dir / 'templates' / 'index.html'
+    if template_path.exists():
         return render_template('index.html')
-    except Exception as e:
+    else:
         return jsonify({
             'status': True,
             'creator': 'Xrljose Xxdvわ',
             'message': 'API funcionando',
             'documentation': '/api/list',
+            'error': 'Template not found, but API works',
             'timestamp': datetime.now().isoformat()
         })
 
