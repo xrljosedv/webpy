@@ -5,16 +5,22 @@ import sys
 import importlib
 from pathlib import Path
 from datetime import datetime
+import json
 import uuid
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+base_dir = Path(__file__).parent.resolve()
+
+app = Flask(__name__,
+    static_folder=str(base_dir / 'static'),
+    template_folder=str(base_dir / 'templates')
+)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
-app.config['UPLOAD_FOLDER'] = Path(__file__).parent / 'uploads'
+app.config['UPLOAD_FOLDER'] = base_dir / 'uploads'
 app.config['UPLOAD_FOLDER'].mkdir(exist_ok=True)
 
-ROUTER_DIR = Path(__file__).parent / 'router'
+ROUTER_DIR = base_dir / 'router'
 router_endpoints = []
 
 def load_routers():
@@ -28,7 +34,7 @@ def load_routers():
             init_file.touch()
         return
     
-    sys.path.insert(0, str(ROUTER_DIR.parent))
+    sys.path.insert(0, str(base_dir))
     
     for py_file in ROUTER_DIR.glob('*.py'):
         if py_file.name == '__init__.py':
@@ -143,7 +149,16 @@ def list_endpoints():
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    try:
+        return render_template('index.html')
+    except Exception as e:
+        return jsonify({
+            'status': True,
+            'creator': 'Xrljose Xxdvわ',
+            'message': 'API funcionando',
+            'documentation': '/api/list',
+            'timestamp': datetime.now().isoformat()
+        })
 
 @app.errorhandler(404)
 def not_found(error):
