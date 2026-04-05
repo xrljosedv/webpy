@@ -13,51 +13,33 @@
     <div class="app-container">
         <header class="docs-header">
             <div class="header-content">
-                <h1 class="logo">
-                    xrljosedev<span class="logo-accent">/api</span>
-                </h1>
+                <h1 class="logo">xrljosedev<span class="logo-accent">/api</span></h1>
                 <div class="header-meta">
                     <span class="badge-method"><i class="fas fa-key"></i> no-key</span>
-                    <span class="header-stats">
-                        <i class="far fa-clock"></i> <span id="live-response">0ms</span>
-                    </span>
+                    <span class="header-stats"><i class="far fa-clock"></i> <span id="live-response">0ms</span></span>
                 </div>
             </div>
         </header>
-
-        <button class="menu-toggle" id="menuToggleBtn">
-            <i class="fas fa-bars"></i>
-            <span>Endpoints</span>
-        </button>
-
+        <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i><span>Endpoints</span></button>
         <div class="main-layout">
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <h2><i class="far fa-rectangle-list"></i> Endpoints</h2>
                     <span class="endpoint-badge" id="endpoint-count">0</span>
                 </div>
-                
                 <div class="sidebar-search">
                     <i class="fas fa-magnifying-glass"></i>
-                    <input type="search" id="endpoint-search" placeholder="Filtrar por path o descripcion...">
+                    <input type="search" id="endpoint-search" placeholder="Filtrar...">
                 </div>
-                
                 <div class="category-pills" id="category-filters"></div>
-                
                 <nav class="endpoint-nav" id="endpoint-list">
-                    <div class="loading-placeholder">
-                        <div class="loader"></div>
-                        <span>Cargando endpoints...</span>
-                    </div>
+                    <div class="loading-placeholder"><div class="loader"></div><span>Cargando...</span></div>
                 </nav>
             </aside>
-
             <main class="content" id="mainContent">
                 <div class="detail-view" id="api-detail-view" style="display: none;">
                     <div class="detail-header">
-                        <button class="back-button" id="backBtn">
-                            <i class="fas fa-arrow-left"></i>
-                        </button>
+                        <button class="back-button" id="backBtn"><i class="fas fa-arrow-left"></i></button>
                         <div class="endpoint-title">
                             <h2 id="detail-endpoint-name">Selecciona un endpoint</h2>
                             <div class="title-badges">
@@ -66,48 +48,30 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="doc-card">
                         <div class="endpoint-path-block">
                             <span class="method-tag" id="api-method">GET</span>
                             <code class="path-url" id="api-path">/api/ejemplo</code>
                             <div class="path-actions">
-                                <button class="icon-button" id="copyFullUrlBtn" title="Copiar URL completa">
-                                    <i class="far fa-copy"></i>
-                                </button>
-                                <button class="icon-button" id="shareEndpointBtn" title="Compartir">
-                                    <i class="far fa-share-from-square"></i>
-                                </button>
+                                <button class="icon-button" id="copyFullUrlBtn"><i class="far fa-copy"></i></button>
+                                <button class="icon-button" id="shareEndpointBtn"><i class="far fa-share-from-square"></i></button>
                             </div>
                         </div>
-
                         <section class="doc-section">
-                            <h3 class="section-heading">
-                                <i class="far fa-file-lines"></i> Descripcion
-                            </h3>
-                            <p class="section-text" id="api-description">
-                                Elige un endpoint del menu lateral para ver su documentacion.
-                            </p>
+                            <h3 class="section-heading"><i class="far fa-file-lines"></i> Descripcion</h3>
+                            <p class="section-text" id="api-description">Elige un endpoint del menu lateral</p>
                         </section>
-
                         <section class="doc-section">
-                            <h3 class="section-heading">
-                                <i class="fas fa-sliders"></i> Parametros
-                            </h3>
+                            <h3 class="section-heading"><i class="fas fa-sliders"></i> Parametros</h3>
                             <div class="table-wrapper">
                                 <table class="params-table" id="parameters-table">
-                                    <thead>
-                                        <tr><th>Nombre</th><th>Descripcion</th><th>Tipo</th><th>Ejemplo</th></tr>
-                                    </thead>
+                                    <thead><tr><th>Nombre</th><th>Descripcion</th><th>Tipo</th><th>Ejemplo</th></tr></thead>
                                     <tbody><tr><td colspan="4" class="empty-table"><i class="fas fa-circle-info"></i> Selecciona un endpoint</td></tr></tbody>
                                 </table>
                             </div>
                         </section>
-
                         <section class="doc-section">
-                            <h3 class="section-heading">
-                                <i class="fas fa-code"></i> Ejemplos de codigo
-                            </h3>
+                            <h3 class="section-heading"><i class="fas fa-code"></i> Ejemplos</h3>
                             <div class="code-tabs">
                                 <div class="tabs-header">
                                     <button class="tab-btn active" data-tab="curl"><i class="fas fa-terminal"></i> cURL</button>
@@ -115,119 +79,60 @@
                                     <button class="tab-btn" data-tab="python"><i class="fab fa-python"></i> Python</button>
                                 </div>
                                 <div class="tab-pane active" id="curl-tab">
-                                    <div class="code-header">
-                                        <span><i class="fas fa-code"></i> Solicitud de ejemplo</span>
-                                        <button class="copy-button" data-target="curl-code"><i class="far fa-copy"></i> Copiar</button>
-                                    </div>
-                                    <pre><code class="language-bash" id="curl-code"># Esperando seleccion</code></pre>
+                                    <div class="code-header"><span><i class="fas fa-code"></i> Ejemplo</span><button class="copy-button" data-target="curl-code"><i class="far fa-copy"></i> Copiar</button></div>
+                                    <pre><code class="language-bash" id="curl-code"># Esperando</code></pre>
                                 </div>
                                 <div class="tab-pane" id="javascript-tab">
-                                    <div class="code-header">
-                                        <span><i class="fas fa-code"></i> Fetch API</span>
-                                        <button class="copy-button" data-target="js-code"><i class="far fa-copy"></i> Copiar</button>
-                                    </div>
-                                    <pre><code class="language-javascript" id="js-code">// Esperando seleccion</code></pre>
+                                    <div class="code-header"><span><i class="fas fa-code"></i> Fetch API</span><button class="copy-button" data-target="js-code"><i class="far fa-copy"></i> Copiar</button></div>
+                                    <pre><code class="language-javascript" id="js-code">// Esperando</code></pre>
                                 </div>
                                 <div class="tab-pane" id="python-tab">
-                                    <div class="code-header">
-                                        <span><i class="fas fa-code"></i> Requests</span>
-                                        <button class="copy-button" data-target="python-code"><i class="far fa-copy"></i> Copiar</button>
-                                    </div>
-                                    <pre><code class="language-python" id="python-code"># Esperando seleccion</code></pre>
+                                    <div class="code-header"><span><i class="fas fa-code"></i> Requests</span><button class="copy-button" data-target="python-code"><i class="far fa-copy"></i> Copiar</button></div>
+                                    <pre><code class="language-python" id="python-code"># Esperando</code></pre>
                                 </div>
                             </div>
                         </section>
-
                         <section class="doc-section">
-                            <h3 class="section-heading">
-                                <i class="fas fa-flask"></i> Probar endpoint
-                            </h3>
+                            <h3 class="section-heading"><i class="fas fa-flask"></i> Probar</h3>
                             <div class="try-card">
                                 <div class="try-header">
-                                    <select id="try-method">
-                                        <option>GET</option>
-                                        <option>POST</option>
-                                        <option>PUT</option>
-                                        <option>PATCH</option>
-                                        <option>DELETE</option>
-                                    </select>
-                                    <input type="text" id="try-url" readonly value="Selecciona un endpoint">
+                                    <select id="try-method"><option>GET</option><option>POST</option></select>
+                                    <input type="text" id="try-url" readonly>
                                     <button class="primary-button" id="send-request"><i class="far fa-paper-plane"></i> Enviar</button>
                                 </div>
-                                
-                                <div class="try-params-panel" id="try-params-container">
-                                    <div class="info-note"><i class="fas fa-circle-info"></i> Elige un endpoint para ver sus parametros</div>
-                                </div>
-                                
+                                <div class="try-params-panel" id="try-params-container"><div class="info-note"><i class="fas fa-circle-info"></i> Selecciona un endpoint</div></div>
                                 <div class="upload-panel" id="upload-section" style="display: none;">
                                     <h4><i class="fas fa-cloud-arrow-up"></i> Subir archivos</h4>
                                     <div class="upload-area" id="upload-area">
                                         <i class="fas fa-file-arrow-up upload-icon"></i>
-                                        <p>Arrastra o <button class="text-button" id="browse-btn">selecciona</button> archivos</p>
-                                        <small>Max 50MB</small>
+                                        <p>Arrastra o <button class="text-button" id="browse-btn">selecciona</button></p>
                                         <input type="file" id="file-upload" multiple hidden>
                                     </div>
                                     <div class="file-preview" id="file-preview"></div>
                                 </div>
-                                
                                 <div class="response-area">
-                                    <div class="response-header">
-                                        <span><i class="fas fa-browser"></i> Respuesta</span>
-                                        <span class="response-meta">Status: <span id="response-status">-</span> · <span id="response-time-value">-</span>ms</span>
-                                    </div>
+                                    <div class="response-header"><span><i class="fas fa-browser"></i> Respuesta</span><span class="response-meta">Status: <span id="response-status">-</span> · <span id="response-time-value">-</span>ms</span></div>
                                     <div class="response-body">
-                                        <div class="response-loader" id="response-loader" style="display: none;">
-                                            <div class="loader"></div>
-                                            <span>Cargando...</span>
-                                        </div>
-                                        <pre id="try-response-body"><code class="language-json">// La respuesta aparecera aqui</code></pre>
+                                        <div class="response-loader" id="response-loader" style="display: none;"><div class="loader"></div><span>Cargando...</span></div>
+                                        <pre id="try-response-body"><code class="language-json">// Respuesta</code></pre>
                                     </div>
                                     <div class="response-footer" id="response-actions" style="display: none;">
-                                        <button class="secondary-button" id="copy-json-btn"><i class="far fa-copy"></i> Copiar JSON</button>
-                                        <button class="secondary-button" id="open-api-btn"><i class="fas fa-up-right-from-square"></i> Ver API</button>
-                                        <button class="secondary-button" id="open-media-btn" style="display: none;"><i class="fas fa-eye"></i> Ver</button>
+                                        <button class="secondary-button" id="copy-json-btn"><i class="far fa-copy"></i> Copiar</button>
+                                        <button class="secondary-button" id="open-api-btn"><i class="fas fa-up-right-from-square"></i> Ver</button>
                                     </div>
                                 </div>
                             </div>
                         </section>
-
-                        <div class="media-preview" id="media-section" style="display: none;">
-                            <h4><i class="fas fa-image"></i> Vista previa</h4>
-                            <div id="media-preview"></div>
-                            <div class="media-actions" id="media-actions">
-                                <button class="secondary-button download-btn"><i class="fas fa-download"></i> Descargar</button>
-                                <button class="secondary-button share-media-btn"><i class="fas fa-share-from-square"></i> Compartir</button>
-                            </div>
-                        </div>
-                        
-                        <div class="json-media-section" id="json-media-section" style="display: none;">
-                            <h4><i class="fas fa-images"></i> Multimedia en la respuesta</h4>
-                            <div id="json-media-container" class="json-media-container"></div>
-                        </div>
+                        <div class="media-preview" id="media-section" style="display: none;"><h4><i class="fas fa-image"></i> Vista previa</h4><div id="media-preview"></div></div>
+                        <div class="json-media-section" id="json-media-section" style="display: none;"><h4><i class="fas fa-images"></i> Multimedia</h4><div id="json-media-container"></div></div>
                     </div>
                 </div>
-
-                <div class="grid-view" id="api-grid">
-                    <div class="grid-placeholder">
-                        <i class="far fa-hand-pointer"></i>
-                        <p>Selecciona un endpoint del menu</p>
-                    </div>
-                </div>
+                <div class="grid-view" id="api-grid"><div class="grid-placeholder"><i class="far fa-hand-pointer"></i><p>Selecciona un endpoint</p></div></div>
             </main>
         </div>
-
-        <footer class="docs-footer">
-            <span><i class="fas fa-crown"></i> Xrljose Xxdvわ</span>
-            <span><i class="fas fa-globe"></i> IP: <span id="user-ip">-</span></span>
-            <span><i class="fas fa-bolt"></i> <span id="api-count">0</span> endpoints</span>
-        </footer>
+        <footer class="docs-footer"><span><i class="fas fa-crown"></i> Xrljose Xxdvわ</span><span><i class="fas fa-globe"></i> IP: <span id="user-ip">-</span></span><span><i class="fas fa-bolt"></i> <span id="api-count">0</span></span></footer>
     </div>
-    
-    <div id="mediaModal" class="modal">
-        <span class="modal-close">&times;</span>
-        <div class="modal-content" id="modalMediaContainer"></div>
-    </div>
-    
+    <div id="mediaModal" class="modal"><span class="modal-close">&times;</span><div class="modal-content" id="modalMediaContainer"></div></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script src="/static/script.js"></script>
 </body>
