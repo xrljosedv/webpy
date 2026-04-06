@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file, render_template
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import os
 import sys
@@ -10,10 +10,7 @@ import uuid
 
 base_dir = Path(__file__).parent.resolve()
 
-app = Flask(__name__,
-    static_folder=str(base_dir / 'static'),
-    template_folder=str(base_dir / 'static')
-)
+app = Flask(__name__, static_folder='static', static_url_path='')
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
@@ -149,18 +146,11 @@ def list_endpoints():
 
 @app.route('/', methods=['GET'])
 def home():
-    template_path = base_dir / 'static' / 'index.html'
-    if template_path.exists():
-        return render_template('index.html')
-    else:
-        return jsonify({
-            'status': True,
-            'creator': 'Xrljose Xxdvわ',
-            'message': 'API funcionando',
-            'documentation': '/api/list',
-            'error': 'Template not found, but API works',
-            'timestamp': datetime.now().isoformat()
-        })
+    return send_from_directory('static', 'index.html')
+
+@app.route('/<path:path>', methods=['GET'])
+def static_files(path):
+    return send_from_directory('static', path)
 
 @app.errorhandler(404)
 def not_found(error):
@@ -182,4 +172,4 @@ if __name__ == '__main__':
     print(f'\033[34m►\033[37m Documentacion: \033[36mhttp://localhost:5000\033[0m')
     print(f'\033[34m►\033[37m Lista de endpoints: \033[36mhttp://localhost:5000/api/list\033[0m')
     
-    app.run(host='0.0.0.0', port=5000, debug=True)[]
+    app.run(host='0.0.0.0', port=5000, debug=False)
