@@ -12,7 +12,7 @@ base_dir = Path(__file__).parent.resolve()
 
 app = Flask(__name__,
     static_folder=str(base_dir / 'static'),
-    template_folder=str(base_dir / 'templates')
+    template_folder=str(base_dir / 'static')
 )
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -149,7 +149,7 @@ def list_endpoints():
 
 @app.route('/', methods=['GET'])
 def home():
-    template_path = base_dir / 'templates' / 'index.html'
+    template_path = base_dir / 'static' / 'index.html'
     if template_path.exists():
         return render_template('index.html')
     else:
@@ -182,4 +182,4 @@ if __name__ == '__main__':
     print(f'\033[34m►\033[37m Documentacion: \033[36mhttp://localhost:5000\033[0m')
     print(f'\033[34m►\033[37m Lista de endpoints: \033[36mhttp://localhost:5000/api/list\033[0m')
     
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)[]
