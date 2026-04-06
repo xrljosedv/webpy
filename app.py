@@ -52,12 +52,7 @@ def load_routers():
 def create_route_handler(endpoint_config):
     def handler():
         try:
-            metode = endpoint_config.get('metode', 'GET').upper()
-            
-            if metode == 'GET':
-                result = endpoint_config.get('run', lambda req: None)(request)
-            else:
-                result = endpoint_config.get('run', lambda req: None)(request)
+            result = endpoint_config.get('run', lambda req: None)(request)
             
             if isinstance(result, dict):
                 if 'file' in result and 'filename' in result:
@@ -162,14 +157,5 @@ def not_found(error):
     }), 404
 
 if __name__ == '__main__':
-    print('\033[34m╔══════════════════════════════════════════════════════════╗\033[0m')
-    print('\033[34m║\033[37m                  xrljosedev Apis                    \033[34m║\033[0m')
-    print('\033[34m╚══════════════════════════════════════════════════════════╝\033[0m')
-    print('\033[32m✓\033[37m Servidor iniciado correctamente')
-    print('\033[36m👤\033[37m Creador: Xrljose Xxdvわ')
-    print('')
-    print(f'\033[34m►\033[37m Servidor corriendo en \033[36mhttp://localhost:5000\033[0m')
-    print(f'\033[34m►\033[37m Documentacion: \033[36mhttp://localhost:5000\033[0m')
-    print(f'\033[34m►\033[37m Lista de endpoints: \033[36mhttp://localhost:5000/api/list\033[0m')
-    
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
